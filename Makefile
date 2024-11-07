@@ -32,6 +32,6 @@ re: fclean all
 
 run: mac
 	./$(NAME)
-	make clean
+	make fclean
 
 .PHONY: all clean fclean re run
