@@ -65,13 +65,17 @@ void	init_player(t_player *player, t_game *game)
 */
 void	move_player(int new_pos_x, int new_pos_y, t_game *game, t_player *player)
 {
-	game->map[player->pos_y][player->pos_x] = '0';
-	printf("%c\n", game->map[player->pos_y][player->pos_x]);
+	int	old_x;
+	int	old_y;
+
+	old_x = player->pos_x;
+	old_y = player->pos_y;
+	game->map[player->pos_y][player->pos_x] = player->last_sprite;
 	player->pos_x = new_pos_x;
 	player->pos_y = new_pos_y;
 	player->last_sprite = game->map[player->pos_y][player->pos_x];
 	game->map[player->pos_y][player->pos_x] = 'P';
-	draw_map(game, player);
+	update_player_pos(old_x, old_y, player->pos_x, player->pos_y, game, player);
 }
 
 /*
@@ -83,11 +87,13 @@ void	move_player(int new_pos_x, int new_pos_y, t_game *game, t_player *player)
 */
 int	handle_player_movement(int key, t_handle_player_movement_params *params)
 {
-	int	new_pos_x;
-	int	new_pos_y;
+	t_exit_game_params	exit_game_params;
+	int					new_pos_x;
+	int					new_pos_y;
 
 	new_pos_x = params->player->pos_x;
 	new_pos_y = params->player->pos_y;
+	printf("%d\n", key);
 	if (key == 13)
 	{
 		new_pos_y--;
@@ -111,6 +117,11 @@ int	handle_player_movement(int key, t_handle_player_movement_params *params)
 		new_pos_x++;
 		if (params->game->map[new_pos_y][new_pos_x] != '1')
 			move_player(new_pos_x, new_pos_y, params->game, params->player);
+	}
+	if (key == 53)
+	{
+		exit_game_params.game = params->game;
+		exit_game(&exit_game_params);
 	}
 	return(0);
 }

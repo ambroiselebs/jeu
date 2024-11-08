@@ -17,6 +17,7 @@
 # include "../../main.h"
 # include "../init/init.h"
 
+void	update_player_pos(int old_x, int old_y, int new_x, int new_y, t_game *game, t_player *player);
 void	free_map(t_game *game);
 void	init_map(t_game *game);
 void	put_correct_texture(char c, int x, int y, t_game *game, t_player *player);

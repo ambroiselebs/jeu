@@ -42,12 +42,13 @@ void	init_window_images(t_game *game)
 void	init_window(t_game *game)
 {
 	game->tile_size = 32;
-	game->win_width = 51;
+	game->win_width = 50;
 	game->win_height = 29;
 	game->win_title = "jeu";
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window(game->mlx,
-			game->win_width * game->tile_size,
+			game->win_width * game->tile_size - game->tile_size,
 			game->win_height * game->tile_size,
 			game->win_title);
+	init_window_images(game);
 }
