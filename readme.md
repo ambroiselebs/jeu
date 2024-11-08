@@ -18,3 +18,10 @@ On vscode you have to add this path to your includePath setting
 "${workspaceFolder}/mlx_mac",
 "${workspaceFolder}/mlx_linux"
 ```
+
+# Help on code
+
+### Map
+`1` = Wall <br />
+`0` = Blank <br />
+`P` = Player <br />

@@ -19,25 +19,19 @@
 */
 int	exit_game(t_exit_game_params *params)
 {
-	printf("\n\n");
+	printf("\n\nExit game\n\n");
 	mlx_destroy_window(params->game->mlx, params->game->mlx_win);
+	free_map(params->game);
 	exit(0);
 	return (0);
 }
-
 /*
-	Handling windows related keyboard entries
-	ESCAPE (macos/windows/linux) => exit game
+	Funtion to laod every required image by the window (wall, blank...)
 */
-int	handle_window_touch(int key, t_handle_touch_params *params)
+/* void	init_window_images(t_game *game)
 {
-	t_exit_game_params	exit_game_params;
 
-	exit_game_params.game = params->game;
-	if (key == 65307 || key == 53)
-		exit_game(&exit_game_params);
-	return (0);
-}
+} */
 
 /*
 	Initialize windows with corect informations
@@ -48,9 +42,12 @@ int	handle_window_touch(int key, t_handle_touch_params *params)
 void	init_window(t_game *game)
 {
 	game->tile_size = 32;
-	game->win_width = 500;
-	game->win_height = 500;
+	game->win_width = 51;
+	game->win_height = 29;
 	game->win_title = "jeu";
 	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(game->mlx, game->win_width, game->win_height, game->win_title);
+	game->mlx_win = mlx_new_window(game->mlx,
+			game->win_width * game->tile_size,
+			game->win_height * game->tile_size,
+			game->win_title);
 }

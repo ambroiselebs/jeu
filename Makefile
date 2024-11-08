@@ -5,7 +5,9 @@ INCLUDES_MAC = -Imlx_mac
 INCLUDES_LINUX = -Imlx_linux
 LIBS_LINUX = -Lmlx_linux -lmlx_linux
 LIBS_MAC = -Lmlx_mac -lmlx -framework OpenGL -framework AppKit
-SRC = main.c src/init/game.c
+SRC = main.c src/init/game.c \
+		src/map/map_init.c src/map/map.c \
+		src/player/player.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
