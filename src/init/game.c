@@ -28,10 +28,10 @@ int	exit_game(t_exit_game_params *params)
 /*
 	Funtion to laod every required image by the window (wall, blank...)
 */
-/* void	init_window_images(t_game *game)
+void	init_window_images(t_game *game)
 {
-
-} */
+	game->ground_sprite = mlx_xpm_file_to_image(game->mlx, "assets/ground.xpm", &game->tile_size, &game->tile_size);
+}
 
 /*
 	Initialize windows with corect informations

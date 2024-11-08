@@ -20,6 +20,7 @@
 void	init_player_image(t_player *player, t_game *game)
 {
 	player->skin = mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", &game->tile_size, &game->tile_size);
+	//player->skin = mlx_png_file_to_image(game->mlx, "assets/player.png", &game->tile_size, &game->tile_size);
 }
 
 /*

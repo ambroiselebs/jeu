@@ -26,6 +26,7 @@ typedef struct s_game
 	int			win_width;
 	int			win_height;
 	int			tile_size;
+	void		*ground_sprite;
 }	t_game;
 
 #endif

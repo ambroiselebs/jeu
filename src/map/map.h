@@ -19,7 +19,7 @@
 
 void	free_map(t_game *game);
 void	init_map(t_game *game);
-void	put_correct_texture(char c, t_game *game, t_player *player);
+void	put_correct_texture(char c, int x, int y, t_game *game, t_player *player);
 void	draw_map(t_game *game, t_player *player);
 
 #endif

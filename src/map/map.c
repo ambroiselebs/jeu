@@ -16,8 +16,13 @@
 /*
 	Decide which texture have to placed depending on the char code
 */
-void	put_correct_texture(char c, t_game *game, t_player *player)
+void	put_correct_texture(char c, int x, int y, t_game *game, t_player *player)
 {
+	if (c == '0')
+		mlx_put_image_to_window(game->mlx, game->mlx_win,
+				game->ground_sprite,
+				x * game->tile_size,
+				y * game->tile_size);
 	if (c == 'P')
 		mlx_put_image_to_window(game->mlx, game->mlx_win,
 				player->skin,
@@ -39,7 +44,7 @@ void	draw_map(t_game *game, t_player *player)
 		x = 0;
 		while (x < game->win_width)
 		{
-			put_correct_texture(game->map[y][x], game, player);
+			put_correct_texture(game->map[y][x], x, y, game, player);
 			x++;
 		}
 		y++;
